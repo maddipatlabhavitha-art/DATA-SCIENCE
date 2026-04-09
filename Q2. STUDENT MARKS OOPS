@@ -1,0 +1,42 @@
+class Student:
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks   
+
+    def calculate_total(self):
+        if not self.marks:
+            return 0
+        return sum(self.marks.values())
+
+    def calculate_average(self):
+        if not self.marks:
+            return 0
+        return sum(self.marks.values()) / len(self.marks)
+
+    def get_grade(self):
+        avg = self.calculate_average()
+
+        if avg >= 90:
+            return "A"
+        elif avg >= 75:
+            return "B"
+        elif avg >= 50:
+            return "C"
+        else:
+            return "Fail"
+
+students = [
+    Student("Bhavitha", {"Math": 95, "Science": 90, "English": 88}),
+    Student("jay", {"Math": 70, "Science": 65}),
+    Student("pinky", {})   # empty marks case
+]
+
+for s in students:
+    total = s.calculate_total()
+    avg = s.calculate_average()
+    grade = s.get_grade()
+
+    print("\nName:", s.name)
+    print("Total:", total)
+    print("Average:", avg)
+    print("Grade:", grade)
